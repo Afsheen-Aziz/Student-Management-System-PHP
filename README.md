@@ -1,42 +1,42 @@
-# 🎓 StudentHub - Modern Student Management System
+# StudentHub - Modern Student Management System
 
 A comprehensive PHP-based student management system featuring modern UI design, secure authentication, and complete CRUD operations for managing student records.
 
-## ✨ Features
+## Features
 
-### 🔐 Authentication & Security
+### Authentication & Security
 - **Secure User Registration & Login** - Password hashing with PHP's built-in functions
 - **Session Management** - Secure session handling for user authentication
 - **Login Protection** - All pages require authentication to access
 - **Input Sanitization** - Protection against SQL injection and XSS attacks
 
-### 👥 Student Management
+### Student Management
 - **Add New Students** - Complete student registration with profile pictures
 - **View All Students** - Modern table interface with search and pagination
 - **Edit Student Information** - Update student details and profile pictures
 - **Advanced Search** - Multi-criteria search by ID, name, email, course, semester, and gender
 - **File Upload** - Profile picture upload with validation and security
 
-### 🎨 Modern UI/UX
+### Modern UI/UX
 - **Responsive Design** - Works perfectly on desktop, tablet, and mobile devices
 - **Dark/Light Theme** - Toggle between themes with 30-day cookie persistence
 - **Modern Gradient Design** - Beautiful gradients and glass morphism effects
 - **Smooth Animations** - Hover effects and transitions for better user experience
 - **Professional Typography** - System fonts for optimal readability
 
-### 📊 Dashboard & Analytics
+### Dashboard & Analytics
 - **Statistics Dashboard** - Quick overview of total students and system metrics
 - **Activity Logging** - Track all system activities and user actions
 - **Recent Activity Feed** - View latest system activities
 
-### 🔧 Technical Features
+### Technical Features
 - **MySQL Database** - Robust data storage with proper relationships
 - **PDO Database Connection** - Secure and modern database interactions
 - **Error Handling** - Comprehensive error handling and user feedback
 - **File Management** - Secure file upload and management system
 - **Responsive Bootstrap** - Bootstrap 5.1.3 for responsive design
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Backend**: PHP 7.4+
 - **Database**: MySQL 5.7+
@@ -45,14 +45,14 @@ A comprehensive PHP-based student management system featuring modern UI design, 
 - **Icons**: Font Awesome 6.0.0
 - **Server**: Apache (XAMPP recommended)
 
-## 📋 Requirements
+## Requirements
 
 - PHP 7.4 or higher
 - MySQL 5.7 or higher
 - Apache Web Server
 - Web browser with JavaScript enabled
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### 1. Install XAMPP
 - Download and install [XAMPP](https://www.apachefriends.org/download.html)
@@ -85,7 +85,7 @@ $password = '';
 - Navigate to: `http://localhost/php assignment 2.0/`
 - Register a new account or use existing credentials
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 php assignment 2.0/
@@ -105,7 +105,7 @@ php assignment 2.0/
 └── README.md               # This file
 ```
 
-## 🎯 Key Features Explained
+## Key Features Explained
 
 ### Theme System
 - **Light Mode**: Clean, professional appearance with high contrast
@@ -123,11 +123,11 @@ php assignment 2.0/
 - **Tablet-Friendly**: Perfect display on tablet screens
 - **Desktop Enhanced**: Full features on desktop computers
 
-## 🔒 Default Users
+## Default Users
 
 The system requires user registration. Create your account through the registration page.
 
-## 🎨 Customization
+## Customization
 
 ### Changing Colors
 Update CSS variables in any PHP file's `<style>` section:
@@ -144,7 +144,7 @@ Update CSS variables in any PHP file's `<style>` section:
 - Implement proper error handling
 - Maintain responsive design principles
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -167,18 +167,18 @@ Update CSS variables in any PHP file's `<style>` section:
    - Check if session.save_path is writable
    - Verify session settings in PHP configuration
 
-## 📞 Support
+## Support
 
 For technical support or questions:
 - Check the troubleshooting section above
 - Verify all requirements are met
 - Ensure proper file permissions
 
-## 📝 License
+## License
 
 This project is developed for educational purposes. Feel free to use and modify for learning and non-commercial purposes.
 
-## 🚀 Future Enhancements
+## Future Enhancements
 
 - Email notifications
 - Advanced reporting system
