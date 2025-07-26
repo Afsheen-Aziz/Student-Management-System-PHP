@@ -105,45 +105,6 @@ php assignment 2.0/
 └── README.md               # This file
 ```
 
-## Key Features Explained
-
-### Theme System
-- **Light Mode**: Clean, professional appearance with high contrast
-- **Dark Mode**: Easy on the eyes with modern dark theme
-- **Persistence**: Theme choice saved for 30 days using cookies
-
-### Security Features
-- **Password Hashing**: All passwords are securely hashed
-- **Session Protection**: Automatic logout and session validation
-- **Input Validation**: All user inputs are sanitized and validated
-- **File Upload Security**: Restricted file types and secure storage
-
-### Responsive Design
-- **Mobile-First**: Optimized for mobile devices
-- **Tablet-Friendly**: Perfect display on tablet screens
-- **Desktop Enhanced**: Full features on desktop computers
-
-## Default Users
-
-The system requires user registration. Create your account through the registration page.
-
-## Customization
-
-### Changing Colors
-Update CSS variables in any PHP file's `<style>` section:
-```css
-:root {
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-```
-
-### Adding New Features
-- Follow the existing code structure
-- Use PDO for database operations
-- Implement proper error handling
-- Maintain responsive design principles
-
 ## Troubleshooting
 
 ### Common Issues
@@ -166,13 +127,6 @@ Update CSS variables in any PHP file's `<style>` section:
 4. **Sessions Not Working**
    - Check if session.save_path is writable
    - Verify session settings in PHP configuration
-
-## Support
-
-For technical support or questions:
-- Check the troubleshooting section above
-- Verify all requirements are met
-- Ensure proper file permissions
 
 ## License
 
