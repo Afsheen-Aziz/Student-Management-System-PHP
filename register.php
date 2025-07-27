@@ -103,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
         h3 {
             font-weight: 700;
             color: #2c3e50;
+            margin-top: 2.5rem;
             margin-bottom: 2rem;
             text-align: center;
         }
@@ -187,6 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
             position: absolute;
             top: 1.5rem;
             right: 1.5rem;
+            z-index: 10;
         }
 
         .form-select-sm {
@@ -195,6 +197,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
             background: rgba(255,255,255,0.2);
             color: white;
             backdrop-filter: blur(10px);
+            font-size: 0.8rem;
+            min-width: 100px;
         }
 
         .login-link {
@@ -216,6 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
 
         .dark-theme h3 {
             color: #ffffff !important;
+            margin-top: 2.5rem;
         }
 
         .dark-theme .form-label {
@@ -233,6 +238,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'])) {
         .dark-theme .form-select:focus {
             background: rgba(51, 51, 51, 0.9) !important;
             border-color: #667eea !important;
+            color: #ffffff !important;
+        }
+
+        .dark-theme .form-select-sm {
+            background: rgba(51, 51, 51, 0.9) !important;
+            border-color: #555 !important;
             color: #ffffff !important;
         }
 
