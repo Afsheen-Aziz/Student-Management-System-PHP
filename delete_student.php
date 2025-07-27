@@ -10,6 +10,9 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 $student_id = (int)$_GET['id'];
 
 try {
+    // Get database connection
+    $pdo = getDBConnection();
+    
     // Get student details before deletion for logging
     $stmt = $pdo->prepare("SELECT student_id, first_name, last_name, profile_picture FROM students WHERE id = ?");
     $stmt->execute([$student_id]);
