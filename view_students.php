@@ -532,9 +532,6 @@ function getSortIcon($column, $current_sort, $current_order) {
                 <div class="mt-3">
                     <small class="text-muted">
                         Showing <?php echo count($students); ?> student(s)
-                        <?php if ($search): ?>
-                            for search "<?php echo htmlspecialchars($search); ?>"
-                        <?php endif; ?>
                     </small>
                 </div>
             <?php endif; ?>
