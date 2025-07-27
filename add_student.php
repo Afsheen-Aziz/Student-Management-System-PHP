@@ -35,17 +35,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 // Handle file upload
                 $profile_picture = null;
-                if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
-                    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
-                    $filename = $_FILES['profile_picture']['name'];
-                    $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+                $upload_error = '';
+                
+                if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['size'] > 0) {
+                    $upload_error_code = $_FILES['profile_picture']['error'];
                     
-                    if (in_array($file_ext, $allowed)) {
-                        $new_filename = uniqid() . '.' . $file_ext;
-                        $upload_path = 'uploads/' . $new_filename;
+                    if ($upload_error_code == 0) {
+                        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+                        $filename = $_FILES['profile_picture']['name'];
+                        $file_ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
                         
-                        if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $upload_path)) {
-                            $profile_picture = $new_filename;
+                        if (in_array($file_ext, $allowed)) {
+                            $new_filename = uniqid() . '.' . $file_ext;
+                            $upload_path = 'uploads/' . $new_filename;
+                            
+                            // Ensure uploads directory exists and is writable
+                            if (!is_dir('uploads')) {
+                                mkdir('uploads', 0755, true);
+                            }
+                            
+                            if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $upload_path)) {
+                                $profile_picture = $new_filename;
+                            } else {
+                                $upload_error = 'Failed to move uploaded file. Check directory permissions.';
+                            }
+                        } else {
+                            $upload_error = 'Invalid file type. Only JPG, JPEG, PNG, and GIF files are allowed.';
+                        }
+                    } else {
+                        switch ($upload_error_code) {
+                            case UPLOAD_ERR_INI_SIZE:
+                            case UPLOAD_ERR_FORM_SIZE:
+                                $upload_error = 'File is too large.';
+                                break;
+                            case UPLOAD_ERR_PARTIAL:
+                                $upload_error = 'File upload was interrupted.';
+                                break;
+                            case UPLOAD_ERR_NO_TMP_DIR:
+                                $upload_error = 'Missing temporary folder.';
+                                break;
+                            case UPLOAD_ERR_CANT_WRITE:
+                                $upload_error = 'Failed to write file to disk.';
+                                break;
+                            default:
+                                $upload_error = 'Unknown upload error.';
                         }
                     }
                 }
@@ -55,7 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $stmt->execute([$student_id, $first_name, $last_name, $email, $phone, $date_of_birth, $gender, $address, $course, $semester, $profile_picture]);
                 
                 $message = 'Student added successfully!';
-                $messageType = 'success';
+                if ($upload_error) {
+                    $message .= ' Note: ' . $upload_error;
+                    $messageType = 'warning';
+                } else {
+                    $messageType = 'success';
+                }
                 writeLog("New student added: $student_id - $first_name $last_name");
                 
                 // Clear form
