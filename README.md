@@ -60,8 +60,9 @@ A comprehensive PHP-based student management system featuring modern UI design, 
 
 ### 2. Download Project
 ```bash
-# Clone or download the project to your XAMPP htdocs folder
-# Example path: C:\xampp\htdocs\php assignment 2.0\
+# Clone the repository or download the project to your XAMPP htdocs folder
+git clone https://github.com/Afsheen-Aziz/Student-Management-System-PHP.git
+# Or extract ZIP file to: C:\xampp\htdocs\Student-Management-System-PHP\
 ```
 
 ### 3. Database Setup
@@ -82,15 +83,15 @@ $password = '';
 
 ### 5. Access the System
 - Open your web browser
-- Navigate to: `http://localhost/php assignment 2.0/`
+- Navigate to: `http://localhost/Student-Management-System-PHP/`
 - Register a new account or use existing credentials
 
 ## Project Structure
 
 ```
-php assignment 2.0/
+Student-Management-System-PHP/
 ├── config.php              # Database configuration and utility functions
-├── index.php               # Login page
+├── index.php               # Login page (entry point)
 ├── register.php            # User registration
 ├── dashboard.php           # Main dashboard with statistics
 ├── add_student.php         # Add new student form
@@ -99,10 +100,13 @@ php assignment 2.0/
 ├── search_student.php      # Advanced search functionality
 ├── logs.php                # System activity logs
 ├── logout.php              # User logout
-├── database.sql            # Database schema
-├── uploads/                # Student profile pictures
-├── logs/                   # System log files
-└── README.md               # This file
+├── database.sql            # Database schema and setup
+├── .gitignore              # Git ignore file
+├── uploads/                # Student profile pictures directory
+│   └── .gitkeep           # Ensures directory is tracked
+├── logs/                   # System log files directory
+│   └── .gitkeep           # Ensures directory is tracked
+└── README.md               # Project documentation
 ```
 
 ## Troubleshooting
@@ -131,6 +135,19 @@ php assignment 2.0/
 ## License
 
 This project is developed for educational purposes. Feel free to use and modify for learning and non-commercial purposes.
+
+## Submission Notes
+
+This project is complete and ready for academic submission. All features are implemented and tested:
+
+- ✅ User authentication system
+- ✅ Complete CRUD operations for students
+- ✅ Modern responsive UI with dark/light themes
+- ✅ File upload functionality with error handling
+- ✅ Search and filtering capabilities
+- ✅ Activity logging system
+- ✅ Comprehensive error handling
+- ✅ Security measures (input sanitization, password hashing)
 
 ## Future Enhancements
 
