@@ -2,8 +2,7 @@
 require_once 'config.php';
 requireLogin();
 
-// Handle search and sorting
-$search = isset($_GET['search']) ? sanitizeInput($_GET['search']) : '';
+// Handle sorting
 $sort_by = isset($_GET['sort']) ? sanitizeInput($_GET['sort']) : 'id';
 $order = isset($_GET['order']) && $_GET['order'] == 'desc' ? 'DESC' : 'ASC';
 
@@ -17,19 +16,10 @@ try {
     $pdo = getDBConnection();
     
     // Build query
-    $sql = "SELECT * FROM students WHERE 1=1";
-    $params = [];
-    
-    if ($search) {
-        $sql .= " AND (student_id LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR course LIKE ?)";
-        $search_term = "%$search%";
-        $params = array_fill(0, 5, $search_term);
-    }
-    
-    $sql .= " ORDER BY $sort_by $order";
+    $sql = "SELECT * FROM students ORDER BY $sort_by $order";
     
     $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
+    $stmt->execute();
     $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
 } catch (Exception $e) {
@@ -39,8 +29,7 @@ try {
 // Helper function for sort links
 function getSortLink($column, $current_sort, $current_order) {
     $new_order = ($current_sort == $column && $current_order == 'ASC') ? 'desc' : 'asc';
-    $search_param = isset($_GET['search']) ? '&search=' . urlencode($_GET['search']) : '';
-    return "?sort=$column&order=$new_order" . $search_param;
+    return "?sort=$column&order=$new_order";
 }
 
 // Helper function for sort icon
@@ -440,6 +429,9 @@ function getSortIcon($column, $current_sort, $current_order) {
                     <h5 class="mb-0"><i class="fas fa-users me-2"></i>All Students</h5>
                 </div>
                 <div class="col-auto">
+                    <a href="search_student.php" class="btn btn-outline-primary btn-sm me-2">
+                        <i class="fas fa-search me-1"></i>Search Students
+                    </a>
                     <a href="add_student.php" class="btn btn-primary btn-sm">
                         <i class="fas fa-plus me-1"></i>Add New Student
                     </a>
@@ -447,41 +439,11 @@ function getSortIcon($column, $current_sort, $current_order) {
             </div>
         </div>
         <div class="card-body">
-            <!-- Search Form -->
-            <form method="GET" class="mb-4">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" name="search" 
-                                   placeholder="Search by ID, name, email, or course..." 
-                                   value="<?php echo htmlspecialchars($search); ?>">
-                            <button class="btn btn-outline-secondary" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <?php if ($search): ?>
-                            <a href="view_students.php" class="btn btn-outline-secondary">
-                                <i class="fas fa-times me-1"></i>Clear Search
-                            </a>
-                        <?php endif; ?>
-                    </div>
-                </div>
-                <!-- Preserve sort parameters -->
-                <input type="hidden" name="sort" value="<?php echo $sort_by; ?>">
-                <input type="hidden" name="order" value="<?php echo strtolower($order); ?>">
-            </form>
-
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger"><?php echo $error; ?></div>
             <?php elseif (empty($students)): ?>
                 <div class="alert alert-info">
-                    <?php if ($search): ?>
-                        No students found matching your search criteria.
-                    <?php else: ?>
-                        No students found. <a href="add_student.php">Add the first student</a>.
-                    <?php endif; ?>
+                    No students found. <a href="add_student.php">Add the first student</a>.
                 </div>
             <?php else: ?>
                 <div class="table-responsive">
